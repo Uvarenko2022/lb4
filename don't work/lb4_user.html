@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id = "body">
+    <script>
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(xhttp.responseXML);
+            }
+        }
+
+        xhttp.open("GET", "lb4.xml", true)
+        xhttp.send();
+
+        function myFunction(xml) {
+            let txt1 = ""
+            let txt2 = ""
+            let txt3 = ""
+
+            path1 = "//name"
+            path2 = "//author"
+            path3 = "//numberOfPages"
+
+            path = "//book" //???
+
+            if(xml.evaluate) {
+                let nodes1 = xml.evaluate(path1, xml, null, XPathResult.ANY_TYPE, null)
+                let result1 = nodes1.iterateNext()
+
+                let node2 = xml.evaluate(path2, xml, null, XPathResult.ANY_TYPE, null)
+                let result2 = node2.iterateNext()
+
+                let node3 = xml.evaluate(path3, xml, null, XPathResult.ANY_TYPE, null)
+                let result3 = node3.iterateNext()
+                
+                while(result1) {
+                    let defaulttxt = `${result1.childNodes[0].nodeValue} of author ${result2.childNodes[0].nodeValue} with ${result3.childNodes[0].nodeValue} pages.`
+                    let p = document.createElement("p")
+                    let node = document.createTextNode(defaulttxt)
+                    p.appendChild(node)
+                    document.getElementById("body").appendChild(p)
+                    result1 = nodes1.iterateNext()
+                    result2 = node2.iterateNext()
+                    result3 = node3.iterateNext()
+                }
+
+            }   
+
+            // let defaulttxt  = ""
+
+            // document.getElementById("demo").innerHTML = txt + "<br>"
+        }
+    </script>
+</body>
+</html>

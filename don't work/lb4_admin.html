@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Name</p>
+    <input type="text" id = "name_input">
+    <p>Author</p>
+    <input type="text" id = "author_input">
+    <p>Number Of Pages</p>
+    <input type="text" id = "nop_input">
+    <!-- <form action="lb4_user.html"></form> -->
+    <iframe src="lb4_user.html" frameborder="0" style = "display: block;" id = "frame"></iframe>
+    <script>
+        let xhttp = new XMLHttpRequest()
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.onkeypress = (e) => {
+                    if (e.keyCode == 13) {
+                        if(Number(document.getElementById("nop_input").value) != null)
+                            theFunction()
+                    }
+                }
+            }
+        }
+
+        xhttp.open("GET", "lb4.xml", true)
+        xhttp.send()
+
+        function theFunction() {
+            let xmlDoc = xhttp.responseXML
+            let newElement = xmlDoc.createElement("book")
+            let x = xmlDoc.getElementsByTagName("library")[0]
+            
+            x.appendChild(newElement)
+
+            let tags = xmlDoc.getElementsByTagName("book")
+            x = tags[tags.length - 1]
+
+            let newName = xmlDoc.createElement("name")
+            let newAuthor = xmlDoc.createElement("author")
+            let newNOP = xmlDoc.createElement("numberOfPages")
+
+            let name = document.getElementById("name_input").value
+            let author = document.getElementById("author_input").value
+            let numberOfPages = Number(document.getElementById("nop_input").value)
+
+            let nameNode = xmlDoc.createTextNode(name)
+            let authorNode = xmlDoc.createTextNode(author)
+            let nopNode = xmlDoc.createTextNode(numberOfPages)
+
+            newName.appendChild(nameNode)
+            x.appendChild(newName)
+
+            newAuthor.appendChild(authorNode)
+            x.appendChild(newAuthor)
+
+            newNOP.appendChild(nopNode)
+            x.appendChild(newNOP)
+
+            console.log(xmlDoc.children[0])
+
+            document.getElementById("frame").contentDocument.location.reload(true)
+        }
+    </script>
+</body>
+</html>

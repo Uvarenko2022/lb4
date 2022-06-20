@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "demo"></p>
+    <script>
+        xhttp = new XMLHttpRequest()
+        txt = ""
+
+        let url = 'https://labtask87.s3.amazonaws.com/employeedata.json';
+
+        fetch(url)
+        .then(res => res.json())
+        .then((out) => {
+        console.log('Checkout this JSON! ', out);
+        })
+        .catch(err => { throw err });
+    </script>
+</body>
+</html>

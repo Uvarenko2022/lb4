@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book category = "antiutopia">
+        <name>1984</name>
+        <author>G. Orwell</author>
+        <numberOfPages>200</numberOfPages>
+    </book>
+    <book category = "science fiction">
+        <name>Flowers for Algernon</name>
+        <author>D. Keyes</author>
+        <numberOfPages>250</numberOfPages>
+    </book>
+    <book category = "biography">
+        <name>Minds of Billy Mylligan</name>
+        <author>D. Keyes</author>
+        <numberOfPages>374</numberOfPages>
+    </book>
+    <book category = "fantazy">
+        <name>Harry Potter and the Philosopher's Stone</name>
+        <author>J.K. Rowling</author>
+        <numberOfPages>400</numberOfPages>
+    </book>
+    <book category = "science fiction">
+        <name>The third wave</name>
+        <author>Alvin Toffler</author>
+        <numberOfPages>320</numberOfPages>
+    </book>
+    <book category = "science fiction">
+        <name>Sci fi idk</name>
+        <author>D. Keyes</author>
+        <numberofPages>1000</numberofPages>
+    </book>
+</library>

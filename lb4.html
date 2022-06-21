@@ -22,7 +22,7 @@
         function myFunction(xml){
             // let xmlDoc = xml.responseXML;
             let txt = ""
-            path = "//book[@category='science fiction' and ./author/text()='D. Keyes' and ./numberofPages>900]/name"
+            path = "//book[@category='science fiction' and ./author/text()='D. Keyes' and ./numberOfPages>900]/name"
             // path  = "/library/book[1]/author"
             if(xml.evaluate) {
                 let nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null)

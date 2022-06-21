@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="library"><h1>Library</h1>
+
+    </ul>
+
+    <script>
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(xhttp.responseXML);
+            }
+        }
+
+        xhttp.open("GET", "lb4.xml", true)
+        xhttp.send();
+
+        function myFunction(xml) {
+            let library = document.getElementById("library")
+            let xmlBooks = xml.getElementsByTagName("book");
+            let xmlLib = xml.getElementsByTagName("library")
+
+
+            for (let i = 0; i < xmlBooks.length; i++) {
+
+                let child = document.createElement("h3");
+                console.log(xmlBooks[i].getElementsByTagName("numberOfPages"))
+                let text = `Book 
+                <ul>
+                    <li>name: ${xmlBooks[i].getElementsByTagName("name")[0].childNodes[0].nodeValue}</li>
+                    <li>author: ${xmlBooks[i].getElementsByTagName("author")[0].childNodes[0].nodeValue}</li>
+                    <li>pages: ${xmlBooks[i].getElementsByTagName("numberOfPages")[0].childNodes[0].nodeValue}</li>
+                </ul>`
+                child.innerHTML = text
+                
+                library.appendChild(child)
+            }
+        }
+    </script>
+</body>
+</html>

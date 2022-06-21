@@ -41,7 +41,7 @@
                 let result3 = node3.iterateNext()
                 
                 while(result1) {
-                    let defaulttxt = `${result1.childNodes[0].nodeValue} of author ${result2.childNodes[0].nodeValue} with ${result3.childNodes[0].nodeValue} pages.`
+                    let defaulttxt = `Book ${result1.childNodes[0].nodeValue} of author ${result2.childNodes[0].nodeValue} with ${result3.childNodes[0].nodeValue} pages.`
                     let p = document.createElement("p")
                     let node = document.createTextNode(defaulttxt)
                     p.appendChild(node)

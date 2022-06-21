@@ -28,6 +28,6 @@
     <book category = "science fiction">
         <name>Sci fi idk</name>
         <author>D. Keyes</author>
-        <numberofPages>1000</numberofPages>
+        <numberOfPages>1000</numberOfPages>
     </book>
 </library>
